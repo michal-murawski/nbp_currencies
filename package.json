@@ -51,12 +51,30 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "test:coverage": "node scripts/test.js --coverage --env=jsdom"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,mjs}"
+    "setupTestFrameworkScriptFile": "<rootDir>/internals/test-bundler.js",
+    "unmockedModulePathPatterns": [
+      "react",
+      "enzyme",
+      "jest-enzyme"
     ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,mjs}",
+      "!src/**/*.test.{js,jsx}",
+      "!src/index.js",
+      "!<rootDir>/node_modules/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 0,
+        "branches": 0,
+        "functions": 0,
+        "lines": 0
+      }
+    },
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
     ],
@@ -105,6 +123,9 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "babel-plugin-import": "^1.6.7"
+    "babel-plugin-import": "^1.6.7",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest-enzyme": "^6.0.0"
   }
 }
