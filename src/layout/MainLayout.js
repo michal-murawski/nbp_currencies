@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Navigation from './navigation/Navigation';
 import Header from './Header';
+import Content from './Content';
 
 const MainLayout = (props) => {
   return (
@@ -9,7 +10,9 @@ const MainLayout = (props) => {
       <Header>
         <Navigation />
       </Header>
-      {props.children}
+      <Content>
+        {props.children}
+      </Content>
     </div>
   );
 };

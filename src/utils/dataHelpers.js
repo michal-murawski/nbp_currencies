@@ -1,4 +1,4 @@
-import { prop, sort, ascend, descend } from 'ramda';
+import { prop, sort, ascend, descend, map, propEq, without, any, __ } from 'ramda';
 
 
 export function sortArrayAscOrDesc(searchParameter, direction, collection) {
@@ -9,3 +9,7 @@ export function sortArrayAscOrDesc(searchParameter, direction, collection) {
     collection
   )
 }
+
+
+export const filterListWithout = (list, excepts, key) =>
+  list.filter((item) => excepts.every((except) => item[key] !== except));

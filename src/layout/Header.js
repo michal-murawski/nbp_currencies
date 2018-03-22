@@ -5,7 +5,7 @@ import Typography from 'material-ui/Typography';
 import AppBar from 'material-ui/AppBar';
 import { HeaderStyles } from './styles';
 
-export const headerTitle = 'Wybierz swoje ulubione waluty';
+export const headerTitle = 'Pick your favourite currencies! :)';
 
 const Header = props => {
   const { classes, children } = props;
@@ -13,7 +13,7 @@ const Header = props => {
   return (
     <AppBar position="static" color="default">
       <Typography variant="display3" className={classes.title}>
-        Wybierz swoje ulubione waluty
+        {headerTitle}
       </Typography>
       {children}
     </AppBar>
@@ -24,7 +24,8 @@ Header.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired
+  ]).isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export const HeaderRaw = Header;

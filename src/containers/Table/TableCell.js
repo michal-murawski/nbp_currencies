@@ -5,8 +5,7 @@ import { TableCell as TableCellMUI } from 'material-ui/Table';
 
 const styles = theme => ({
   root: {
-    padding: `0 ${theme.gutters[4]}`,
-    textAlign: 'center',
+    textAlign: 'left',
     fontSize: 18
   }
 });
@@ -15,7 +14,7 @@ function TableCell(props) {
   const { children, classes } = props;
 
   return (
-    <TableCellMUI padding="none" classes={{ root: classes.root }}>{children}</TableCellMUI>
+    <TableCellMUI classes={{ root: classes.root }}>{children}</TableCellMUI>
   );
 }
 

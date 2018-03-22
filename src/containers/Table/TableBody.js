@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { propOr } from 'ramda';
 import { TableBody as TableBodyMUI, TableRow } from 'material-ui/Table';
-import { getProperRowsCellValues } from 'utils/tableHelpers';
+
 import TableCell from './TableCell';
 
+const generateKey = () => Math.floor(Math.random() * 1000);
 
 function TableBody(props) {
-  const { rows, rowKeys, type } = props;
+  const { rows, rowKeys } = props;
 
   return (
     <TableBodyMUI>
       {rows.map(row => (
-        <TableRow key={row.id}>
+        <TableRow key={propOr(generateKey(), 'code', row)}>
           {rowKeys.map(key => 
-            <TableCell key={key}>{getProperRowsCellValues(row, key, type)}</TableCell>
+            <TableCell key={propOr(generateKey(), key, row)}>{propOr('---', key, row)}</TableCell>
           )}
         </TableRow>
       ))}

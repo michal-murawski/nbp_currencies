@@ -14,8 +14,10 @@ class TableHead extends Component {
   }
 
   handleOnClick = (sorter, index) => () => {
-    this.setState({ activeIndex: index });
-    this.props.onHeadCellClick(sorter)
+    if (sorter) {
+      this.setState({ activeIndex: index });
+      this.props.onHeadCellClick(sorter);
+    }
   }
 
   render() {
@@ -29,7 +31,7 @@ class TableHead extends Component {
             <TableCell
               onClick={this.handleOnClick(label.sorter, index)}
               key={label.label}
-              classes={{ root: classes.headerCell }}
+              classes={{ head: classes.title }}
             >
               {label.sorter ?
                 <TableSortLabel direction={direction} active={activeIndex === index}>{label.label}</TableSortLabel>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TableMUI from 'material-ui/Table';
-import { sortArrayAscOrDesc } from 'utils/dataSort';
+import Paper from 'material-ui/Paper';
+import { sortArrayAscOrDesc } from 'utils/dataHelpers';
+import { getRowKeys } from 'utils/tableHelpers';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 
@@ -36,41 +38,26 @@ class Table extends Component {
   };
 
   render() {
-    const { headerLabels, rowKeys, type } = this.props;
+    const { headerLabels } = this.props;
     const { rows, sortDirection } = this.state;
 
     return (
-      <TableMUI>
-        <TableHead headerLabels={headerLabels} onHeadCellClick={this.sortTableBy} direction={sortDirection} />
-        <TableBody rows={rows} rowKeys={rowKeys} type={type} />
-      </TableMUI>
+      <Paper>
+        <TableMUI>
+          <TableHead headerLabels={headerLabels} onHeadCellClick={this.sortTableBy} direction={sortDirection} />
+          <TableBody rows={rows} rowKeys={getRowKeys(headerLabels)} />
+        </TableMUI>
+      </Paper>
     );
   }
 }
 
 Table.defaultProps = {
   rows: [],
-  rowKeys: [],
 }
 
 Table.propTypes = {
-  type: PropTypes.string.isRequired,
-  rows: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    surname: PropTypes.string,
-    postal_code: PropTypes.string,
-    city: PropTypes.string,
-    street: PropTypes.string,
-    tel: PropTypes.string,
-    email: PropTypes.string,
-    confirmed: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.number
-    ]),
-    extra_information: PropTypes.string,
-  })),
-  rowKeys: PropTypes.arrayOf(PropTypes.string),
+  rows: PropTypes.array,
 };
 
 export default Table;

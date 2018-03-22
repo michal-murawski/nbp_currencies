@@ -5,8 +5,10 @@ exports[`layout/MainLayouRaw should render properly the MainLayouRaw 1`] = `
   <WithStyles(Header)>
     <Navigation />
   </WithStyles(Header)>
-  <TestChild />
-  <TestChild />
-  <TestChild />
+  <WithStyles(Content)>
+    <TestChild />
+    <TestChild />
+    <TestChild />
+  </WithStyles(Content)>
 </div>
 `;

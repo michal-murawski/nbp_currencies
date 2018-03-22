@@ -3,3 +3,10 @@ export const HeaderStyles = theme => ({
     padding: `${theme.gutters[32]} ${theme.gutters[40]}`,
   },
 });
+
+export const ContentStyles = theme => ({
+  content: {
+    margin: 'auto',
+    padding: theme.gutters[16]
+  }
+});
