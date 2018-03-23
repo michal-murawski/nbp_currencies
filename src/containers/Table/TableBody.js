@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { propOr } from 'ramda';
 import { TableBody as TableBodyMUI, TableRow } from 'material-ui/Table';
-
+import { generateRandomNumber } from 'utils/dataHelpers';
 import TableCell from './TableCell';
 
-const generateKey = () => Math.floor(Math.random() * 1000);
 
 function TableBody(props) {
   const { rows, rowKeys } = props;
@@ -13,9 +12,9 @@ function TableBody(props) {
   return (
     <TableBodyMUI>
       {rows.map(row => (
-        <TableRow key={propOr(generateKey(), 'code', row)}>
+        <TableRow key={propOr(generateRandomNumber(), 'code', row)}>
           {rowKeys.map(key => 
-            <TableCell key={propOr(generateKey(), key, row)}>{propOr('---', key, row)}</TableCell>
+            <TableCell key={propOr(generateRandomNumber(), key, row)}>{propOr('---', key, row)}</TableCell>
           )}
         </TableRow>
       ))}

@@ -3,24 +3,28 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Table from 'containers/Table/Table';
 import PageLoader from 'components/PageLoader';
-import { filterListWithout } from 'utils/dataHelpers';
-
+import FavouriteIndicatorIcon from 'containers/FavouriteIndicatorIcon';
+import {getFavouriteIdByCode} from "../utils/dataHelpers";
 export const headerLabels = [
   {
     label: 'Name',
-    sorter: 'currency'
+    sorter: 'currency',
+    key: 'currency',
   },
   {
     label: 'Code',
-    sorter: 'code'
+    sorter: 'code',
+    key: 'code',
   },
   {
     label: 'Value [PLN]',
-    sorter: 'mid'
+    sorter: 'mid',
+    key: 'mid'
   },
   {
     label : 'Add to favourites',
-    sorter: ''
+    sorter: '',
+    key: 'add'
   }
 ];
 
@@ -28,12 +32,16 @@ class CurrenciesPage extends React.PureComponent {
 
   renderPageContent = () => {
     const { currencies, favourites } = this.props;
-    const filtered = (currencies.length && favourites.length) ? filterListWithout(currencies, favourites, 'code') : currencies;
+    const enchantedRow = currencies.map((row) => ({
+      ...row,
+      add: <FavouriteIndicatorIcon code={row.code} favouriteId={getFavouriteIdByCode(row.code, favourites)} />,
+    }));
 
     return (
-      <Table headerLabels={headerLabels} rows={filtered} />
+      <Table headerLabels={headerLabels} rows={enchantedRow} />
     );
-  }
+  };
+
   render() {
     const { fetching } = this.props;
 
@@ -41,7 +49,7 @@ class CurrenciesPage extends React.PureComponent {
           <PageLoader />
           : this.renderPageContent()
   }
-};
+}
 
 CurrenciesPage.propTypes = {
   fetching:PropTypes.bool,

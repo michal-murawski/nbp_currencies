@@ -1,4 +1,4 @@
-import { prop, sort, ascend, descend, map, propEq, without, any, __ } from 'ramda';
+import { prop, sort, ascend, descend, find, propEq } from 'ramda';
 
 
 export function sortArrayAscOrDesc(searchParameter, direction, collection) {
@@ -10,6 +10,8 @@ export function sortArrayAscOrDesc(searchParameter, direction, collection) {
   )
 }
 
+export function getFavouriteIdByCode(code, favourites) {
+  return prop('id', find(propEq('code', code))(favourites));
+}
 
-export const filterListWithout = (list, excepts, key) =>
-  list.filter((item) => excepts.every((except) => item[key] !== except));
+export const generateRandomNumber = () => Math.floor(Math.random() * 100000);

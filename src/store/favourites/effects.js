@@ -22,14 +22,28 @@ export function* workerFavouritesFetchRequest() {
   }
 }
 
-export function* fworkerFvouritesAddRequest({ payload }) {
+export function* workerFavouritesAddRequest({ payload }) {
+  try {
+    const response = yield call(Api.favourites.addFavourites, payload);
 
+    yield put(favouritesAddRequestSuccess(response))
+  } catch (exception) {
+    yield put(favouritesRemoveRequestFailure(exception))
+  }
 }
 
-export function* workerfavouritesRemoveRequest({ payload }) {
+export function* workerFavouritesRemoveRequest({ payload }) {
+  try {
+    const response = yield call(Api.favourites.deleteFavourites, payload);
 
+    yield put(favouritesRemoveRequestSuccess(response))
+  } catch (exception) {
+    yield put(favouritesAddRequestFailure(exception))
+  }
 }
 
 export default function*() {
   yield takeEvery(favouritesFetchRequest, workerFavouritesFetchRequest);
+  yield takeEvery(favouritesAddRequest, workerFavouritesAddRequest);
+  yield takeEvery(favouritesRemoveRequest, workerFavouritesRemoveRequest);
 }

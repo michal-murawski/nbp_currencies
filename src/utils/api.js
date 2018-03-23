@@ -1,3 +1,5 @@
+import{ generateRandomNumber } from 'utils/dataHelpers';
+
 const apiUrl = 'http://api.nbp.pl/api/exchangerates/tables/a';
 const localDevServer = 'http://localhost:8080/favourites';
 
@@ -29,7 +31,10 @@ async function getFavourites() {
 }
 
 async function addFavourites(currency) {
-  const body = JSON.stringify(currency);
+  const body = JSON.stringify({
+    id: generateRandomNumber(),
+    code: currency,
+  });
 
   const response = await fetch(localDevServer, {
     headers: {
@@ -37,7 +42,7 @@ async function addFavourites(currency) {
       'Content-Type': 'application/json',
     },
     method: 'POST',
-    body 
+    body
   });
 
   if (!response.ok) {
@@ -47,17 +52,13 @@ async function addFavourites(currency) {
   return await response.json();
 }
 
-async function deleteFavourites(currency) {
-  const response = await fetch(localDevServer, {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
+async function deleteFavourites(id) {
+  const response = await fetch(`${localDevServer}/${id}`, {
     method: 'DELETE',
   });
 
   if (!response.ok) {
-    throw new Error('We could not download favourites!');
+    throw new Error('We could not delete favourites!');
   }
 
   return await response.json();

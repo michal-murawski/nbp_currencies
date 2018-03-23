@@ -1,23 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Table from 'containers/Table/Table';
 import PageLoader from 'components/PageLoader';
-import { favouritesFetchRequest } from 'store/favourites/actions';
+
 
 export const headerLabels = [
   {
     label: 'Name',
-    sorter: 'currency'
+    sorter: 'currency',
+      key: 'currency'
   },
   {
     label: 'Code',
-    sorter: 'code'
+    sorter: 'code',
+      key: 'code'
   },
   {
     label: 'Value [PLN]',
-    sorter: 'mid'
+    sorter: 'mid',
+      key: 'mid'
   }
 ];
 
@@ -34,10 +36,10 @@ class FavouritesPage extends React.Component {
       </div>
     );
   }
-};
+}
 
 FavouritesPage.propTypes = {
-
+    fetching: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
