@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`layout/Navigation should render properly the Navigation 1`] = `
+<WithStyles(Toolbar)>
+  <WithStyles(NavigationLink)
+    exact={true}
+    to="/"
+  >
+    Currencies
+  </WithStyles(NavigationLink)>
+  <WithStyles(NavigationLink)
+    to="/favourites"
+  >
+    Favourites
+  </WithStyles(NavigationLink)>
+</WithStyles(Toolbar)>
+`;

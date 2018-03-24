@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`layout/Header should render properly the header 1`] = `
+<WithStyles(AppBar)
+  color="default"
+  position="static"
+>
+  <WithStyles(Typography)
+    className="title_class"
+    variant="display3"
+  >
+    Wybierz swoje ulubione waluty
+  </WithStyles(Typography)>
+  <TestChild />
+</WithStyles(AppBar)>
+`;

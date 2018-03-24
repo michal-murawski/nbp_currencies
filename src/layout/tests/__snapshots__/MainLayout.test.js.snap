@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`layout/MainLayouRaw should render properly the MainLayouRaw 1`] = `
+<div>
+  <WithStyles(Header)>
+    <Navigation />
+  </WithStyles(Header)>
+  <WithStyles(Content)>
+    <TestChild />
+    <TestChild />
+    <TestChild />
+  </WithStyles(Content)>
+</div>
+`;
