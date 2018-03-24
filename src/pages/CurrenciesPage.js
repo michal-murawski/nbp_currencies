@@ -3,51 +3,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Table from 'containers/Table/Table';
 import PageLoader from 'components/PageLoader';
+import { assoc, map } from 'ramda';
 import FavouriteIndicatorIcon from 'containers/FavouriteIndicatorIcon';
-import {getFavouriteIdByCode} from "../utils/dataHelpers";
-export const headerLabels = [
-  {
-    label: 'Name',
-    sorter: 'currency',
-    key: 'currency',
-  },
-  {
-    label: 'Code',
-    sorter: 'code',
-    key: 'code',
-  },
-  {
-    label: 'Value [PLN]',
-    sorter: 'mid',
-    key: 'mid'
-  },
-  {
-    label : 'Add to favourites',
-    sorter: '',
-    key: 'add'
-  }
-];
+import { getFavouriteIdByCode, getValueByPath } from 'utils/dataHelpers';
+import { currenciesHeaderLabels } from './data';
 
 class CurrenciesPage extends React.PureComponent {
-
-  renderPageContent = () => {
-    const { currencies, favourites } = this.props;
-    const enchantedRow = currencies.map((row) => ({
-      ...row,
-      add: <FavouriteIndicatorIcon code={row.code} favouriteId={getFavouriteIdByCode(row.code, favourites)} />,
-    }));
-
-    return (
-      <Table headerLabels={headerLabels} rows={enchantedRow} />
-    );
-  };
+  addIconToRow = (row) => assoc(
+    'add',
+    <FavouriteIndicatorIcon code={row.code} favouriteId={getFavouriteIdByCode(row.code, this.props.favourites)} />,
+    row
+  );
 
   render() {
-    const { fetching } = this.props;
+    const { fetching, currencies } = this.props;
 
     return fetching ?
           <PageLoader />
-          : this.renderPageContent()
+          : <Table headerLabels={currenciesHeaderLabels} rows={map(this.addIconToRow, currencies)} />
   }
 }
 
@@ -59,11 +32,10 @@ CurrenciesPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  error: state.currencies.error,
-  fetching: state.currencies.fetchig,
-  currencies: state.currencies.data,
-  favourites: state.favourites.data
+  error: getValueByPath(['currencies', 'error'], state),
+  fetching: getValueByPath(['currencies', 'fetchig'], state),
+  currencies: getValueByPath(['currencies', 'data'], state),
+  favourites: getValueByPath(['favourites', 'data'], state),
 });
-
 
 export default connect(mapStateToProps)(CurrenciesPage);

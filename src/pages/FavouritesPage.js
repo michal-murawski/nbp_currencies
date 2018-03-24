@@ -1,37 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Button from 'material-ui/Button';
+import Grid from 'material-ui/Grid';
 import Table from 'containers/Table/Table';
 import PageLoader from 'components/PageLoader';
+import { getValueByPath, filterCurrenciesByFavourites } from 'utils/dataHelpers';
+import { assoc, map, prop } from 'ramda';
+import FavouriteIndicatorIcon from 'containers/FavouriteIndicatorIcon';
+import { favouritesRemoveAllRequest as favouritesRemoveAllRequestAction } from 'store/favourites/actions';
+import { getFavouriteIdByCode } from 'utils/dataHelpers';
+import { favouritesHeaderLabels } from './data';
 
 
-export const headerLabels = [
-  {
-    label: 'Name',
-    sorter: 'currency',
-      key: 'currency'
-  },
-  {
-    label: 'Code',
-    sorter: 'code',
-      key: 'code'
-  },
-  {
-    label: 'Value [PLN]',
-    sorter: 'mid',
-      key: 'mid'
-  }
-];
+class FavouritesPage extends React.PureComponent {
+  addIconToRow = (row) => assoc(
+    'add',
+    <FavouriteIndicatorIcon code={row.code} favouriteId={getFavouriteIdByCode(row.code, this.props.favourites)} />,
+    row
+  );
 
-class FavouritesPage extends React.Component {
   render() {
-    const { fetching, favourites } = this.props;
+    const { fetching, favourites, currencies, favouritesRemoveAllRequest } = this.props;
+    const favouritesOnly = filterCurrenciesByFavourites(currencies)(favourites);
+    const getIds = map(prop('id'));
 
     return (
       <div>
         {fetching ?
           <PageLoader />
-          : <Table headerLabels={headerLabels} rows={favourites} />
+          : (
+            <Grid item>
+              <Button
+                variant="raised"
+                color="secondary"
+                onClick={() => {
+                  favouritesRemoveAllRequest(getIds(favourites))
+                }}
+              >
+                Unlove them all
+              </Button>
+              <Table
+                headerLabels={favouritesHeaderLabels}
+                rows={map(this.addIconToRow, favouritesOnly)}
+              />
+            </Grid>
+          )
         }
       </div>
     );
@@ -40,12 +54,17 @@ class FavouritesPage extends React.Component {
 
 FavouritesPage.propTypes = {
     fetching: PropTypes.bool,
+    favouritesRemoveAllRequest: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
-  fetching: state.favourites.fetching,
-  favourites: state.favourites.data
+  fetching: getValueByPath(['favourites', 'fetching'], state),
+  favourites: getValueByPath(['favourites', 'data'], state),
+  currencies: getValueByPath(['currencies', 'data'], state),
 });
 
+const mapDispatchToState = (dispatch) => ({
+  favouritesRemoveAllRequest: (favourites) => dispatch(favouritesRemoveAllRequestAction(favourites)),
+});
 
-export default connect(mapStateToProps)(FavouritesPage);
+export default connect(mapStateToProps, mapDispatchToState)(FavouritesPage);

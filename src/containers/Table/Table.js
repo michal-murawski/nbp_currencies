@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TableMUI from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
-import { sortArrayAscOrDesc } from 'utils/dataHelpers';
+import { sortArray } from 'utils/dataHelpers';
 import { getRowKeys } from 'utils/tableHelpers';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
@@ -15,11 +15,18 @@ class Table extends Component {
     this.state = {
       rows: props.rows,
       sortDirection: 'asc',
+      searchParameter: ''
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ rows: nextProps.rows });
+    this.setState(({ searchParameter, sortDirection, rows }) => ({
+      rows: sortArray(
+        searchParameter,
+        this.getSortDirection(sortDirection),
+        nextProps.rows
+      )
+    }));
   }
 
   getSortDirection(sortDirection) {
@@ -32,8 +39,9 @@ class Table extends Component {
 
   sortTableBy = (searchParameter) => {
     this.setState(({ rows, sortDirection }) => ({
-      rows: sortArrayAscOrDesc(searchParameter, this.getSortDirection(sortDirection), rows),
+      rows: sortArray(searchParameter, this.getSortDirection(sortDirection), rows),
       sortDirection: this.getSortDirection(sortDirection),
+      searchParameter
     }));
   };
 

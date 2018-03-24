@@ -52,11 +52,11 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "NODE_PATH=src node scripts/start.js",
-    "dev-server": "json-server -p 8080 db.json",
-    "build": "NODE_PATH=src node scripts/build.js",
-    "test": "NODE_PATH=src node scripts/test.js --env=jsdom",
-    "test:coverage": "NODE_PATH=src node scripts/test.js --coverage --env=jsdom"
+    "start": "node scripts/start.js",
+    "dev-server": "json-server -p 7878 db.json -d 1000",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom",
+    "test:coverage": "node scripts/test.js --coverage --env=jsdom"
   },
   "babel": {
     "presets": [

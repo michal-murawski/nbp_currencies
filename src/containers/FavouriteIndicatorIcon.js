@@ -5,6 +5,7 @@ import Favorite from 'material-ui-icons/Favorite';
 import NotFavorite from 'material-ui-icons/FavoriteBorder';
 import IconButton from 'components/IconButton';
 import IconLoader from 'components/IconLoader';
+import { getValueByPath } from 'utils/dataHelpers';
 import {
   favouritesAddRequest as favouritesAddRequestAction,
   favouritesRemoveRequest as favouritesRemoveRequestAction,
@@ -27,12 +28,12 @@ class FavouritesPage extends React.PureComponent {
   };
 
   render() {
-    const { favouriteId, saving } = this.props;
+    const { favouriteId, favouritesFetching } = this.props;
 
-    if (saving) {
+    if (favouritesFetching) {
       return <IconLoader />;
     }
-    console.log('icon render');
+
     return (
       <IconButton onClick={() => { this.onClickHandler(); }}>
         {favouriteId ?
@@ -45,7 +46,7 @@ class FavouritesPage extends React.PureComponent {
 }
 
 FavouritesPage.propTypes = {
-  saving: PropTypes.bool,
+  favouritesFetching: PropTypes.bool,
   code: PropTypes.string,
   favouriteId: PropTypes.number,
 };
@@ -55,4 +56,8 @@ const mapDispatchToProps = (dispatch) => ({
   favouritesRemoveRequest: (code) => dispatch(favouritesRemoveRequestAction(code)),
 });
 
-export default connect(null, mapDispatchToProps)(FavouritesPage);
+const mapStateToProps = (state) => ({
+  favouritesFetching: getValueByPath(['favourites', 'fetching'], state),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavouritesPage);
