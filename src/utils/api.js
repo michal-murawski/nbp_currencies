@@ -2,18 +2,7 @@ import { generateRandomNumber } from 'utils/dataHelpers';
 import options from './api.options';
 
 const apiUrl = 'http://api.nbp.pl/api/exchangerates/tables/a';
-const wrongApiUrl = 'http://api.nbp.pl/api/exchangerates/tables/f';
 const localDevServer = 'http://localhost:7878/favourites';
-
-async function badRequestWithError() {
-  const response = await fetch(wrongApiUrl, options.get);
-
-  if (!response.ok) {
-    throw new Error('We could not download currencies!');
-  }
-
-  return await response.json();
-}
 
 async function getCurrencies() {
   const response = await fetch(apiUrl, options.get);

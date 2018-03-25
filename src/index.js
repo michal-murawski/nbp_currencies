@@ -7,14 +7,13 @@ import { MuiThemeProvider } from 'material-ui/styles';
 import App from 'containers/App';
 import theme from 'styles/theme';
 import store from './store/index';
-import response from './response.json';
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <MuiThemeProvider theme={theme}>
         <CssBaseline>
-          <App currencies={response} />
+          <App />
         </CssBaseline>
       </MuiThemeProvider>
     </Router>
