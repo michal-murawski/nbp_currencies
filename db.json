@@ -1,35 +1,15 @@
 {
   "favourites": [
     {
-      "id": 14670,
-      "code": "THB"
-    },
-    {
-      "id": 24136,
+      "id": 35679,
       "code": "AUD"
     },
     {
-      "id": 18868,
-      "code": "SEK"
+      "id": 98189,
+      "code": "EUR"
     },
     {
-      "id": 80044,
-      "code": "SEK"
-    },
-    {
-      "id": 20595,
-      "code": "HKD"
-    },
-    {
-      "id": 99965,
-      "code": "USD"
-    },
-    {
-      "id": 48856,
-      "code": "CAD"
-    },
-    {
-      "id": 31933,
+      "id": 74158,
       "code": "XDR"
     }
   ]

@@ -6,8 +6,8 @@ import {
   currenciesFetchRequestSuccess,
 } from './actions';
 
-const defaultFetching = false;
-const defaultData = [];
+export const defaultFetching = false;
+export const defaultData = [];
 
 const fetching = handleActions(
   {
@@ -20,7 +20,7 @@ const fetching = handleActions(
 
 const data = handleActions(
   {
-    [currenciesFetchRequestSuccess]: (_, { payload }) => payload,
+    [currenciesFetchRequestSuccess]: (state, { payload }) => payload,
   },
   defaultData
 );

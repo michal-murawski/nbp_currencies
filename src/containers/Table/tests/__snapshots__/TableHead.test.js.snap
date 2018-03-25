@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`containers/Table/TableCell should call TableCell with children 1`] = `
+exports[`containers/Table/TableHead should render proper number of cells 1`] = `
 <thead
   class="MuiTableHead-root-2"
 >

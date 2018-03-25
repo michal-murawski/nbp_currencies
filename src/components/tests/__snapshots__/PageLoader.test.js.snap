@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/PageLoader should render properly 1`] = `
+<div
+  className="test_value"
+>
+  <WithStyles(CircularProgress)
+    size={70}
+    thickness={1}
+  />
+</div>
+`;

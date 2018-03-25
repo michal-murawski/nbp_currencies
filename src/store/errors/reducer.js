@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import { append, reject, propEq } from 'ramda';
 import { errorsClearMessage } from './actions';
 import {
   favouritesFetchRequest,
-  favouritesFetchRequestSuccess,
   favouritesFetchRequestFailure,
   favouritesRemoveRequestFailure,
   favouritesAddRequestFailure,
@@ -12,25 +10,22 @@ import {
 import {
   currenciesFetchRequest,
   currenciesFetchRequestFailure,
-  currenciesFetchRequestSuccess,
 } from '../currencies/actions';
 
-const defaultError = null;
+export const defaultError = null;
 
 const message = handleActions(
   {
     [errorsClearMessage]: () => null,
     [favouritesFetchRequest]: () => null,
-    [favouritesFetchRequestSuccess]: () => null,
-    [favouritesFetchRequestFailure]: (_, { payload }) =>
-      console.log(payload.message) || payload,
-    [favouritesRemoveRequestFailure]: (_, { payload }) => payload,
-    [favouritesAddRequestFailure]: (_, { payload }) =>
-      console.log(payload.message) || payload,
-    [errorsClearMessage]: () => null,
+    [favouritesFetchRequestFailure]: (state, { payload }) => payload.message,
+    [favouritesRemoveRequestFailure]: (state, { payload }) => payload.message,
+    [favouritesAddRequestFailure]: (state, { payload }) => payload.message,
+    [errorsClearMessage]: () => {
+      return null;
+    },
     [currenciesFetchRequest]: () => null,
-    [currenciesFetchRequestSuccess]: () => null,
-    [currenciesFetchRequestFailure]: (_, { payload }) => payload.message,
+    [currenciesFetchRequestFailure]: (state, { payload }) => payload.message,
   },
   defaultError
 );

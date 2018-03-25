@@ -39,10 +39,7 @@ class TableHead extends Component {
               classes={{ head: classes.title }}
             >
               {label.sorter ? (
-                <TableSortLabel
-                  direction={direction}
-                  active={activeIndex === index}
-                >
+                <TableSortLabel direction={direction} active={activeIndex === index}>
                   {label.label}
                 </TableSortLabel>
               ) : (

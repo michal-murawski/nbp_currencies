@@ -21,10 +21,8 @@ const Header = props => {
 };
 
 Header.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+    .isRequired,
   classes: PropTypes.object.isRequired,
 };
 

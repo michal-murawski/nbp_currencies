@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/IconButton should render properly 1`] = `
+<IconButton
+  classes={
+    Object {
+      "root": "IconButton-root-1 test_class",
+    }
+  }
+  onClick={[Function]}
+>
+  <ChildElement />
+</IconButton>
+`;

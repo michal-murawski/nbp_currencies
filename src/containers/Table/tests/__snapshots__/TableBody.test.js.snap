@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers/Table/TableBody should render proper number of cells 1`] = `
+<WithStyles(TableBody)>
+  <WithStyles(TableRow)
+    key="THB"
+  >
+    <WithStyles(TableCell)
+      key="bat (Tajlandia)"
+    >
+      bat (Tajlandia)
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="THB"
+    >
+      THB
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="0.1099"
+    >
+      0.1099
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="4"
+    >
+      ---
+    </WithStyles(TableCell)>
+  </WithStyles(TableRow)>
+  <WithStyles(TableRow)
+    key="USD"
+  >
+    <WithStyles(TableCell)
+      key="dolar amerykański"
+    >
+      dolar amerykański
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="USD"
+    >
+      USD
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="3.4319"
+    >
+      3.4319
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="9"
+    >
+      ---
+    </WithStyles(TableCell)>
+  </WithStyles(TableRow)>
+  <WithStyles(TableRow)
+    key="AUD"
+  >
+    <WithStyles(TableCell)
+      key="dolar australijski"
+    >
+      dolar australijski
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="AUD"
+    >
+      AUD
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="2.6472"
+    >
+      2.6472
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="14"
+    >
+      ---
+    </WithStyles(TableCell)>
+  </WithStyles(TableRow)>
+  <WithStyles(TableRow)
+    key="HKD"
+  >
+    <WithStyles(TableCell)
+      key="dolar Hongkongu"
+    >
+      dolar Hongkongu
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="HKD"
+    >
+      HKD
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="0.4372"
+    >
+      0.4372
+    </WithStyles(TableCell)>
+    <WithStyles(TableCell)
+      key="19"
+    >
+      ---
+    </WithStyles(TableCell)>
+  </WithStyles(TableRow)>
+</WithStyles(TableBody)>
+`;

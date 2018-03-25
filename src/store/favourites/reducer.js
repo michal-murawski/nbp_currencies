@@ -1,23 +1,23 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import { append, reject, propEq } from 'ramda';
+import { append, reject, propEq, prop, without } from 'ramda';
 import {
   favouritesFetchRequest,
-  favouritesAddRequest,
-  favouritesRemoveRequest,
   favouritesRemoveRequestSuccess,
   favouritesAddRequestSuccess,
   favouritesFetchRequestSuccess,
   favouritesFetchRequestFailure,
-  favouritesRemoveRequestFailure,
-  favouritesAddRequestFailure,
   favouritesRemoveAllRequestSuccess,
   favouritesRemoveAllRequest,
+  favouritesAddRequest,
+  favouritesAddRequestFailure,
+  favouritesRemoveRequest,
+  favouritesRemoveRequestFailure,
 } from './actions';
 
-const defaultData = [];
-const defaultFetching = false;
-const defaultSaving = false;
+export const defaultData = [];
+export const defaultSavingFavourites = [];
+export const defaultFetching = false;
 
 const fetching = handleActions(
   {
@@ -30,33 +30,36 @@ const fetching = handleActions(
   defaultFetching
 );
 
-const saving = handleActions(
+const savingFavourites = handleActions(
   {
-    [favouritesAddRequest]: () => true,
-    [favouritesRemoveRequest]: () => true,
-    [favouritesRemoveAllRequestSuccess]: () => true,
-    [favouritesRemoveRequestSuccess]: () => false,
-    [favouritesAddRequestSuccess]: () => false,
-    [favouritesRemoveRequestFailure]: () => false,
-    [favouritesAddRequestFailure]: () => false,
+    [favouritesAddRequest]: (state, { payload }) => append(payload, state),
+    [favouritesAddRequestFailure]: (state, { payload }) =>
+      without(prop('code', payload), state),
+    [favouritesAddRequestSuccess]: (state, { payload }) =>
+      without(prop('code', payload), state),
+    [favouritesRemoveRequest]: (state, { payload }) =>
+      append(prop('code', payload), state),
+    [favouritesRemoveRequestSuccess]: (state, { payload }) =>
+      without(prop('code', payload), state),
+    [favouritesRemoveRequestFailure]: (state, { payload }) =>
+      without(prop('code', payload), state),
   },
-  defaultSaving
+  defaultSavingFavourites
 );
 
 const data = handleActions(
   {
-    [favouritesFetchRequestSuccess]: (_, { payload }) => payload,
+    [favouritesFetchRequestSuccess]: (state, { payload }) => payload,
     [favouritesRemoveAllRequestSuccess]: () => [],
-    [favouritesAddRequestSuccess]: (state, { payload }) =>
-      append(payload, state),
+    [favouritesAddRequestSuccess]: (state, { payload }) => append(payload, state),
     [favouritesRemoveRequestSuccess]: (state, { payload }) =>
-      reject(propEq('id', payload), state),
+      reject(propEq('id', prop('id', payload)), state),
   },
   defaultData
 );
 
 export default combineReducers({
+  savingFavourites,
   fetching,
-  saving,
   data,
 });

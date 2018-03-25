@@ -10,12 +10,21 @@ import {
   compose,
   innerJoin,
   map,
+  toLower,
+  toString,
 } from 'ramda';
 
 export function sortArray(searchParameter, direction, collection) {
+  if (!searchParameter) {
+    return collection;
+  }
+
   const sortDirection = direction === 'asc' ? ascend : descend;
 
-  return sort(sortDirection(prop(searchParameter)), collection);
+  return sort(
+    sortDirection(compose(toLower, toString, prop(searchParameter))),
+    collection
+  );
 }
 
 export function getFavouriteIdByCode(code, favourites) {
@@ -24,14 +33,10 @@ export function getFavouriteIdByCode(code, favourites) {
 
 export const generateRandomNumber = () => Math.floor(Math.random() * 100000);
 
-export const getValueByPath = (pathArray, store) =>
-  view(lensPath(pathArray), store);
+export const getValueByPath = (pathArray, store) => view(lensPath(pathArray), store);
 
 export const filterCurrenciesByFavourites = currencies =>
   compose(
-    innerJoin(
-      (currency, favourite) => propEq('code', favourite, currency),
-      currencies
-    ),
+    innerJoin((currency, favourite) => propEq('code', favourite, currency), currencies),
     map(prop('code'))
   );

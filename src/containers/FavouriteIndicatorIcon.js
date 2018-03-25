@@ -11,7 +11,7 @@ import {
   favouritesRemoveRequest as favouritesRemoveRequestAction,
 } from 'store/favourites/actions';
 
-class FavouritesPage extends React.PureComponent {
+class FavouriteIndicatorIcon extends React.PureComponent {
   onClickHandler = () => {
     const {
       code,
@@ -21,45 +21,42 @@ class FavouritesPage extends React.PureComponent {
     } = this.props;
 
     if (favouriteId) {
-      return favouritesRemoveRequest(favouriteId);
+      favouritesRemoveRequest({ id: favouriteId, code });
     } else {
       return favouritesAddRequest(code);
     }
   };
 
   render() {
-    const { favouriteId, favouritesFetching } = this.props;
-
-    if (favouritesFetching) {
+    const { favouriteId, favouritesFetching, isSaving } = this.props;
+    if (favouritesFetching || isSaving) {
       return <IconLoader />;
     }
 
     return (
-      <IconButton
-        onClick={() => {
-          this.onClickHandler();
-        }}
-      >
+      <IconButton onClick={this.onClickHandler}>
         {favouriteId ? <Favorite /> : <NotFavorite />}
       </IconButton>
     );
   }
 }
 
-FavouritesPage.propTypes = {
+FavouriteIndicatorIcon.propTypes = {
   favouritesFetching: PropTypes.bool,
+  isSaving: PropTypes.bool,
   code: PropTypes.string,
   favouriteId: PropTypes.number,
 };
 
 const mapDispatchToProps = dispatch => ({
   favouritesAddRequest: code => dispatch(favouritesAddRequestAction(code)),
-  favouritesRemoveRequest: code =>
-    dispatch(favouritesRemoveRequestAction(code)),
+  favouritesRemoveRequest: code => dispatch(favouritesRemoveRequestAction(code)),
 });
 
 const mapStateToProps = state => ({
   favouritesFetching: getValueByPath(['favourites', 'fetching'], state),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavouritesPage);
+export const FavouriteIndicatorIconRaw = FavouriteIndicatorIcon;
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavouriteIndicatorIcon);

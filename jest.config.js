@@ -10,6 +10,8 @@ module.exports = {
     "!src/**/*.test.{js,jsx}",
     "!src/**/styles.{js,jsx}",
     "!src/index.js",
+    "!src/store/index.js",
+    "!src/styles/theme.js",
     "!<rootDir>/node_modules/"
   ],
   "coverageThreshold": {
