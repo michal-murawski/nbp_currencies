@@ -12,7 +12,7 @@ const NavigationLink = props => {
       <NavLink
         className={classes.root}
         activeClassName={classes.active}
-        {...otherProps} 
+        {...otherProps}
       >
         {children}
       </NavLink>
@@ -23,8 +23,8 @@ const NavigationLink = props => {
 NavigationLink.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export const NavigationLinkRaw = NavigationLink;

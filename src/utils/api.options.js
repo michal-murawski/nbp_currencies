@@ -1,23 +1,23 @@
 const getOptions = {
   headers: {
-    'Accept': 'application/json'
+    Accept: 'application/json',
   },
   method: 'GET',
 };
 const deleteOptions = {
   method: 'DELETE',
 };
-const postOptions = (extraOptions) => ({
+const postOptions = extraOptions => ({
   headers: {
-    'Accept': 'application/json',
+    Accept: 'application/json',
     'Content-Type': 'application/json',
   },
   method: 'POST',
-  ...extraOptions
+  ...extraOptions,
 });
 
 export default {
   get: getOptions,
   delete: deleteOptions,
-  post: postOptions
-}
+  post: postOptions,
+};

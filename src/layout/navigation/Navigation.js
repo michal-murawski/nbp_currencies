@@ -6,8 +6,10 @@ import NavigationLink from './NavigationLink';
 const Navigation = props => {
   return (
     <Toolbar>
-      <NavigationLink exact to='/'>Currencies</NavigationLink>
-      <NavigationLink to='/favourites'>Favourites</NavigationLink>
+      <NavigationLink exact to="/">
+        Currencies
+      </NavigationLink>
+      <NavigationLink to="/favourites">Favourites</NavigationLink>
     </Toolbar>
   );
 };

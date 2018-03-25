@@ -1,8 +1,4 @@
-import {
-  put,
-  call,
-  takeLatest,
-} from 'redux-saga/effects';
+import { put, call, takeLatest } from 'redux-saga/effects';
 import Api from 'utils/api';
 
 import {
@@ -11,7 +7,6 @@ import {
   currenciesFetchRequestSuccess,
 } from './actions';
 
-
 export function* workerCurrenciesFetchRequest() {
   try {
     const response = yield call(Api.currencies.getCurrencies);
@@ -19,7 +14,7 @@ export function* workerCurrenciesFetchRequest() {
 
     yield put(currenciesFetchRequestSuccess(data));
   } catch (exception) {
-    yield put(currenciesFetchRequestFailure(exception))
+    yield put(currenciesFetchRequestFailure(exception));
   }
 }
 

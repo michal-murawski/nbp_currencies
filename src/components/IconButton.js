@@ -7,8 +7,8 @@ const styles = theme => ({
   root: {
     width: 30,
     height: 30,
-    fontSize: '1.2rem'
-  }
+    fontSize: '1.2rem',
+  },
 });
 
 function IconButton({ children, classes, onClick }) {
@@ -24,8 +24,8 @@ IconButton.propTypes = {
   classes: PropTypes.object,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default withStyles(styles)(IconButton);

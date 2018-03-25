@@ -5,9 +5,7 @@ import Navigation from '../Navigation';
 import NavigationLink from '../NavigationLink';
 
 describe('layout/Navigation', () => {
-  const wrapper = shallow(
-    <Navigation />
-  );
+  const wrapper = shallow(<Navigation />);
 
   it('should render properly the Navigation', () => {
     expect(toJson(wrapper)).toMatchSnapshot();

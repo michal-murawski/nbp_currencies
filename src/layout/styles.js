@@ -7,6 +7,6 @@ export const HeaderStyles = theme => ({
 export const ContentStyles = theme => ({
   content: {
     margin: 'auto',
-    padding: theme.gutters[16]
-  }
+    padding: theme.gutters[16],
+  },
 });

@@ -1,9 +1,8 @@
-import{ generateRandomNumber } from 'utils/dataHelpers';
+import { generateRandomNumber } from 'utils/dataHelpers';
 import options from './api.options';
 
 const apiUrl = 'http://api.nbp.pl/api/exchangerates/tables/a';
 const localDevServer = 'http://localhost:7878/favourites';
-
 
 async function getCurrencies() {
   const response = await fetch(apiUrl, options.get);
@@ -31,12 +30,11 @@ async function addFavourites(currency) {
     code: currency,
   });
 
-
-  try{ 
+  try {
     const response = await fetch(localDevServer, options.post({ body }));
 
     return await response.json();
-  } catch(e) {
+  } catch (e) {
     throw new Error('We could not download favourites!');
   }
 }
@@ -53,11 +51,11 @@ async function deleteFavourites(id) {
 
 export default {
   currencies: {
-    getCurrencies
+    getCurrencies,
   },
   favourites: {
     getFavourites,
     addFavourites,
     deleteFavourites,
-  }
-}
+  },
+};

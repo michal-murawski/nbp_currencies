@@ -9,16 +9,21 @@ import {
 const defaultFetching = false;
 const defaultData = [];
 
-const fetching = handleActions({
-  [currenciesFetchRequest]: () => true,
-  [currenciesFetchRequestFailure]: () => false,
-  [currenciesFetchRequestSuccess]: () => false,
-}, defaultFetching);
+const fetching = handleActions(
+  {
+    [currenciesFetchRequest]: () => true,
+    [currenciesFetchRequestFailure]: () => false,
+    [currenciesFetchRequestSuccess]: () => false,
+  },
+  defaultFetching
+);
 
-const data = handleActions({
-  [currenciesFetchRequestSuccess]: (_, { payload }) => payload
-}, defaultData);
-
+const data = handleActions(
+  {
+    [currenciesFetchRequestSuccess]: (_, { payload }) => payload,
+  },
+  defaultData
+);
 
 export default combineReducers({
   fetching,

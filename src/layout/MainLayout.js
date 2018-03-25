@@ -4,15 +4,13 @@ import Navigation from './navigation/Navigation';
 import Header from './Header';
 import Content from './Content';
 
-const MainLayout = (props) => {
+const MainLayout = props => {
   return (
     <div>
       <Header>
         <Navigation />
       </Header>
-      <Content>
-        {props.children}
-      </Content>
+      <Content>{props.children}</Content>
     </div>
   );
 };
@@ -20,8 +18,8 @@ const MainLayout = (props) => {
 MainLayout.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export const MainLayouRaw = MainLayout;

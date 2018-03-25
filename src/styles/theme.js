@@ -1,12 +1,12 @@
-import { createMuiTheme  } from 'material-ui/styles';
+import { createMuiTheme } from 'material-ui/styles';
 import green from 'material-ui/colors/green';
 
 const theme = {
   palette: {
-    success: green[500]
+    success: green[500],
   },
   sizes: {
-    tableIcon: 20
+    tableIcon: 20,
   },
   gutters: {
     4: '4px',
@@ -20,7 +20,7 @@ const theme = {
     36: '36px',
     40: '40px',
   },
-  transitionTime: '0.2s'
+  transitionTime: '0.2s',
 };
 
 export default createMuiTheme(theme);

@@ -12,34 +12,34 @@ export const currenciesHeaderLabels = [
   {
     label: 'Value [PLN]',
     sorter: 'mid',
-    key: 'mid'
+    key: 'mid',
   },
   {
-    label : 'Love it!',
+    label: 'Love it!',
     sorter: '',
-    key: 'add'
-  }
+    key: 'add',
+  },
 ];
 
 export const favouritesHeaderLabels = [
   {
     label: 'Name',
     sorter: 'currency',
-      key: 'currency'
+    key: 'currency',
   },
   {
     label: 'Code',
     sorter: 'code',
-      key: 'code'
+    key: 'code',
   },
   {
     label: 'Value [PLN]',
     sorter: 'mid',
-      key: 'mid'
+    key: 'mid',
   },
   {
-    label : 'Unlove it?',
+    label: 'Unlove it?',
     sorter: '',
-    key: 'add'
-  }
+    key: 'add',
+  },
 ];
