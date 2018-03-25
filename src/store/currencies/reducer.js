@@ -7,7 +7,6 @@ import {
 } from './actions';
 
 const defaultFetching = false;
-const defaultError = null;
 const defaultData = [];
 
 const fetching = handleActions({
@@ -17,19 +16,11 @@ const fetching = handleActions({
 }, defaultFetching);
 
 const data = handleActions({
-  [currenciesFetchRequestSuccess]:
-    (_, { payload }) => payload
+  [currenciesFetchRequestSuccess]: (_, { payload }) => payload
 }, defaultData);
-
-const error = handleActions({
-  [currenciesFetchRequest]: () => null,
-  [currenciesFetchRequestSuccess]: () => null,
-  [currenciesFetchRequestFailure]: (_, { payload }) => payload,
-}, defaultError);
 
 
 export default combineReducers({
   fetching,
   data,
-  error,
 });

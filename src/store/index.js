@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga';
 import currenciesReducer from './currencies/reducer';
 import favouritesReducer from './favourites/reducer';
+import errorsReducer from './errors/reducer';
 import favouritesEffects from './favourites/effects';
 import currenciesEffects from './currencies/effects';
 
@@ -9,7 +10,9 @@ import currenciesEffects from './currencies/effects';
 const reducer = combineReducers({
   currencies: currenciesReducer,
   favourites: favouritesReducer,
+  errors: errorsReducer,
 });
+
 const saga = createSagaMiddleware();
 const enhancer = applyMiddleware(saga);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

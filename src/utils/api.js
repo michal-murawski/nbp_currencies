@@ -31,13 +31,14 @@ async function addFavourites(currency) {
     code: currency,
   });
 
-  const response = await fetch(localDevServer, options.post({ body }));
 
-  if (!response.ok) {
+  try{ 
+    const response = await fetch(localDevServer, options.post({ body }));
+
+    return await response.json();
+  } catch(e) {
     throw new Error('We could not download favourites!');
   }
-
-  return await response.json();
 }
 
 async function deleteFavourites(id) {

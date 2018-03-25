@@ -16,7 +16,6 @@ import {
 } from './actions';
 
 const defaultData = [];
-const defaultError = null;
 const defaultFetching = false;
 const defaultSaving = false;
 
@@ -46,17 +45,8 @@ const data = handleActions({
   [favouritesRemoveRequestSuccess]: (state, { payload }) => reject(propEq('id', payload), state),
 }, defaultData);
 
-const error = handleActions({
-  [favouritesFetchRequest]: () => null,
-  [favouritesFetchRequestSuccess]: () => null,
-  [favouritesFetchRequestFailure]: (_, { payload }) => payload,
-  [favouritesRemoveRequestFailure]: (_, { payload }) => payload,
-  [favouritesAddRequestFailure]: (_, { payload }) => payload,  
-}, defaultError);
-
 export default combineReducers({
   fetching,
   saving,
   data,
-  error,
 });
