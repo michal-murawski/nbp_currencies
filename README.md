@@ -9,7 +9,9 @@
  * ramda,
  * material-ui,
  * json-server,
- * prettier.
+ * prettier,
+ * jest,
+ * enzyme.
 
  Steps to proceed in order to run the application:
  1. Clone the repository:
