@@ -12,7 +12,7 @@ import {
 } from 'store/favourites/actions';
 
 class FavouritesPage extends React.PureComponent {
-  onClickHandler = () => {
+  onClickHandler = async () => {
     const {
       code,
       favouriteId,
@@ -21,7 +21,7 @@ class FavouritesPage extends React.PureComponent {
     } = this.props;
 
     if (favouriteId) {
-      return favouritesRemoveRequest(favouriteId);
+      await favouritesRemoveRequest(favouriteId);
     } else {
       return favouritesAddRequest(code);
     }

@@ -42,7 +42,7 @@ CurrenciesPage.propTypes = {
 
 const mapStateToProps = state => ({
   error: getValueByPath(['currencies', 'error'], state),
-  fetching: getValueByPath(['currencies', 'fetchig'], state),
+  fetching: getValueByPath(['currencies', 'fetching'], state),
   currencies: getValueByPath(['currencies', 'data'], state),
   favourites: getValueByPath(['favourites', 'data'], state),
 });

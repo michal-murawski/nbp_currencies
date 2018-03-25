@@ -10,12 +10,21 @@ import {
   compose,
   innerJoin,
   map,
+  toLower,
+  toString,
 } from 'ramda';
 
 export function sortArray(searchParameter, direction, collection) {
+  if (!searchParameter) {
+    return collection;
+  }
+
   const sortDirection = direction === 'asc' ? ascend : descend;
 
-  return sort(sortDirection(prop(searchParameter)), collection);
+  return sort(
+    sortDirection(compose(toLower, toString, prop(searchParameter))),
+    collection
+  );
 }
 
 export function getFavouriteIdByCode(code, favourites) {

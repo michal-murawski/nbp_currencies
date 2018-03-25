@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { tableHeadLabels } from 'tests/testData';
 import TableHead from '../TableHead';
@@ -8,8 +8,7 @@ const mockOnHeadClick = jest.fn();
 
 describe('containers/Table/TableCell', () => {
   it('should call TableCell with children', () => {
-    const ChildDiv = () => <div>Child test</div>;
-    const wrapper = render(
+    const wrapper = shallow(
       <TableHead
         headerLabels={tableHeadLabels}
         onHeadCellClick={mockOnHeadClick}
@@ -17,6 +16,6 @@ describe('containers/Table/TableCell', () => {
       />
     );
 
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(toJson(wrapper.render())).toMatchSnapshot();
   });
 });

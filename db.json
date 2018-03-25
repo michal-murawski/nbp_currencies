@@ -1,36 +1,36 @@
 {
   "favourites": [
     {
-      "id": 14670,
-      "code": "THB"
-    },
-    {
-      "id": 24136,
-      "code": "AUD"
-    },
-    {
-      "id": 18868,
-      "code": "SEK"
-    },
-    {
-      "id": 80044,
-      "code": "SEK"
-    },
-    {
-      "id": 20595,
-      "code": "HKD"
-    },
-    {
-      "id": 99965,
+      "id": 66996,
       "code": "USD"
     },
     {
-      "id": 48856,
+      "id": 49633,
+      "code": "THB"
+    },
+    {
+      "id": 64076,
+      "code": "AUD"
+    },
+    {
+      "id": 10723,
+      "code": "NZD"
+    },
+    {
+      "id": 30496,
       "code": "CAD"
     },
     {
-      "id": 31933,
-      "code": "XDR"
+      "id": 80490,
+      "code": "HKD"
+    },
+    {
+      "id": 30043,
+      "code": "SGD"
+    },
+    {
+      "id": 85125,
+      "code": "EUR"
     }
   ]
 }

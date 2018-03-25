@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import { AppRaw } from '../App';
 
 const mockCurrenciesFetch = jest.fn();

@@ -3,21 +3,16 @@ import { handleActions } from 'redux-actions';
 import { append, reject, propEq } from 'ramda';
 import {
   favouritesFetchRequest,
-  favouritesAddRequest,
-  favouritesRemoveRequest,
   favouritesRemoveRequestSuccess,
   favouritesAddRequestSuccess,
   favouritesFetchRequestSuccess,
   favouritesFetchRequestFailure,
-  favouritesRemoveRequestFailure,
-  favouritesAddRequestFailure,
   favouritesRemoveAllRequestSuccess,
   favouritesRemoveAllRequest,
 } from './actions';
 
 const defaultData = [];
 const defaultFetching = false;
-const defaultSaving = false;
 
 const fetching = handleActions(
   {
@@ -28,19 +23,6 @@ const fetching = handleActions(
     [favouritesFetchRequestFailure]: () => false,
   },
   defaultFetching
-);
-
-const saving = handleActions(
-  {
-    [favouritesAddRequest]: () => true,
-    [favouritesRemoveRequest]: () => true,
-    [favouritesRemoveAllRequestSuccess]: () => true,
-    [favouritesRemoveRequestSuccess]: () => false,
-    [favouritesAddRequestSuccess]: () => false,
-    [favouritesRemoveRequestFailure]: () => false,
-    [favouritesAddRequestFailure]: () => false,
-  },
-  defaultSaving
 );
 
 const data = handleActions(
@@ -57,6 +39,5 @@ const data = handleActions(
 
 export default combineReducers({
   fetching,
-  saving,
   data,
 });

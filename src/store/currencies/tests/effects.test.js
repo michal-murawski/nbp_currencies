@@ -4,7 +4,7 @@ import {
   currenciesFetchRequest,
   currenciesFetchRequestFailure,
   currenciesFetchRequestSuccess,
-} from './actions';
+} from '../actions';
 
 import currenciesEffects, { workerCurrenciesFetchRequest } from '../effects';
 
