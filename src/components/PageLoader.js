@@ -9,8 +9,8 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100hv',
-    marginTop: theme.gutters[36]
-  }
+    marginTop: theme.gutters[36],
+  },
 });
 
 const PageLoader = ({ classes }) => (
@@ -21,6 +21,6 @@ const PageLoader = ({ classes }) => (
 
 PageLoader.propTypes = {
   classes: PropTypes.object.isRequired,
-}
+};
 
 export default withStyles(styles)(PageLoader);

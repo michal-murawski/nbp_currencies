@@ -28,7 +28,7 @@ function Snackbar({ message, errorsClearMessage }) {
           onClick={errorsClearMessage}
         >
           Close
-        </Button>
+        </Button>,
       ]}
     />
   );
@@ -38,13 +38,12 @@ Snackbar.propTypes = {
   message: PropTypes.string,
 };
 
-const mapStateToProsp = ({
+const mapStateToProsp = {
   message: getValueByPath(['errors', 'message']),
-});
+};
 
-const mapDispatchToProsp = (dispatch) => ({
+const mapDispatchToProsp = dispatch => ({
   errorsClearMessage: () => dispatch(errorsClearMessageAction()),
 });
-
 
 export default connect(mapStateToProsp, mapDispatchToProsp)(Snackbar);

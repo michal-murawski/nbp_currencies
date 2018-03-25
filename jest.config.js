@@ -48,5 +48,9 @@ module.exports = {
     "web.jsx",
     "jsx",
     "node"
-  ]
+  ],
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
 }

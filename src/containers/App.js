@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import MainLayout from 'layout/MainLayout';
@@ -18,8 +19,8 @@ class App extends React.Component {
     return (
       <MainLayout className="App">
         <Switch>
-          <Route exact path='/' component={CurrenciesPage} />
-          <Route path='/favourites' component={FavouritesPage} />
+          <Route exact path="/" component={CurrenciesPage} />
+          <Route path="/favourites" component={FavouritesPage} />
           <Route path="*" component={() => <div>404</div>} />
         </Switch>
       </MainLayout>
@@ -27,11 +28,16 @@ class App extends React.Component {
   }
 }
 
-const matDispatchToProps = (dispatch) => ({
+App.propTypes = {
+  currenciesFetchRequest: PropTypes.func.isRequired,
+  favouritesFetchRequest: PropTypes.func.isRequired,
+};
+
+const matDispatchToProps = dispatch => ({
   favouritesFetchRequest: () => dispatch(favouritesFetchRequest()),
-  currenciesFetchRequest: () => dispatch(currenciesFetchRequest())
+  currenciesFetchRequest: () => dispatch(currenciesFetchRequest()),
 });
 
-export default withRouter(
-  connect(null, matDispatchToProps)(App)
-);
+export const AppRaw = App;
+
+export default withRouter(connect(null, matDispatchToProps)(App));

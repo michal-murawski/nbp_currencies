@@ -9,7 +9,6 @@ import { MainLayouRaw } from '../MainLayout';
 const TestChild = () => <div>Test child text</div>;
 const mockClasses = { title: 'title_class' };
 
-
 describe('layout/MainLayouRaw', () => {
   const wrapper = shallow(
     <MainLayouRaw classes={mockClasses}>

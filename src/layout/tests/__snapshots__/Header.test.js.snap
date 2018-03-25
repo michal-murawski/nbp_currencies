@@ -9,7 +9,7 @@ exports[`layout/Header should render properly the header 1`] = `
     className="title_class"
     variant="display3"
   >
-    Wybierz swoje ulubione waluty
+    Pick your favourite currencies! :)
   </WithStyles(Typography)>
   <TestChild />
 </WithStyles(AppBar)>

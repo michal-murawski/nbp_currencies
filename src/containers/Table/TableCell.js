@@ -6,8 +6,8 @@ import { TableCell as TableCellMUI } from 'material-ui/Table';
 const styles = theme => ({
   root: {
     textAlign: 'left',
-    fontSize: 18
-  }
+    fontSize: 18,
+  },
 });
 
 function TableCell(props) {
@@ -21,8 +21,9 @@ function TableCell(props) {
 TableCell.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]).isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(TableCell);

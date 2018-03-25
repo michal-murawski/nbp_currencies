@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Favorite from 'material-ui-icons/Favorite';
 import NotFavorite from 'material-ui-icons/FavoriteBorder';
 import IconButton from 'components/IconButton';
@@ -35,11 +35,12 @@ class FavouritesPage extends React.PureComponent {
     }
 
     return (
-      <IconButton onClick={() => { this.onClickHandler(); }}>
-        {favouriteId ?
-          <Favorite/>
-          : <NotFavorite/>
-        }
+      <IconButton
+        onClick={() => {
+          this.onClickHandler();
+        }}
+      >
+        {favouriteId ? <Favorite /> : <NotFavorite />}
       </IconButton>
     );
   }
@@ -51,12 +52,13 @@ FavouritesPage.propTypes = {
   favouriteId: PropTypes.number,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  favouritesAddRequest: (code) => dispatch(favouritesAddRequestAction(code)),
-  favouritesRemoveRequest: (code) => dispatch(favouritesRemoveRequestAction(code)),
+const mapDispatchToProps = dispatch => ({
+  favouritesAddRequest: code => dispatch(favouritesAddRequestAction(code)),
+  favouritesRemoveRequest: code =>
+    dispatch(favouritesRemoveRequestAction(code)),
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   favouritesFetching: getValueByPath(['favourites', 'fetching'], state),
 });
 

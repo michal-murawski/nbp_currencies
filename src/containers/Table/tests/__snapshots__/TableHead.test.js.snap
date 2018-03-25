@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers/Table/TableCell should call TableCell with children 1`] = `
+<thead
+  class="MuiTableHead-root-2"
+>
+  <tr
+    class="MuiTableRow-root-3 MuiTableRow-head-4"
+  >
+    <th
+      class="MuiTableCell-root-8 MuiTableCell-head-9 TableHead-title-1"
+      scope="col"
+    >
+      <span
+        class="MuiButtonBase-root-21 MuiTableSortLabel-root-16"
+        role="button"
+        tabindex="0"
+      >
+        Name
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root-24 MuiTableSortLabel-icon-18 MuiTableSortLabel-iconDirectionAsc-20"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+          >
+            
+          </path>
+        </svg>
+      </span>
+    </th>
+    <th
+      class="MuiTableCell-root-8 MuiTableCell-head-9 TableHead-title-1"
+      scope="col"
+    >
+      <span
+        class="MuiButtonBase-root-21 MuiTableSortLabel-root-16"
+        role="button"
+        tabindex="0"
+      >
+        Code
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root-24 MuiTableSortLabel-icon-18 MuiTableSortLabel-iconDirectionAsc-20"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+          >
+            
+          </path>
+        </svg>
+      </span>
+    </th>
+    <th
+      class="MuiTableCell-root-8 MuiTableCell-head-9 TableHead-title-1"
+      scope="col"
+    >
+      <span
+        class="MuiButtonBase-root-21 MuiTableSortLabel-root-16"
+        role="button"
+        tabindex="0"
+      >
+        Value [PLN]
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root-24 MuiTableSortLabel-icon-18 MuiTableSortLabel-iconDirectionAsc-20"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+          >
+            
+          </path>
+        </svg>
+      </span>
+    </th>
+    <th
+      class="MuiTableCell-root-8 MuiTableCell-head-9 TableHead-title-1"
+      scope="col"
+    >
+      Love it!
+    </th>
+  </tr>
+</thead>
+`;

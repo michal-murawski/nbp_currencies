@@ -5,7 +5,6 @@ import { TableBody as TableBodyMUI, TableRow } from 'material-ui/Table';
 import { generateRandomNumber } from 'utils/dataHelpers';
 import TableCell from './TableCell';
 
-
 function TableBody(props) {
   const { rows, rowKeys } = props;
 
@@ -13,15 +12,16 @@ function TableBody(props) {
     <TableBodyMUI>
       {rows.map(row => (
         <TableRow key={propOr(generateRandomNumber(), 'code', row)}>
-          {rowKeys.map(key => 
-            <TableCell key={propOr(generateRandomNumber(), key, row)}>{propOr('---', key, row)}</TableCell>
-          )}
+          {rowKeys.map(key => (
+            <TableCell key={propOr(generateRandomNumber(), key, row)}>
+              {propOr('---', key, row)}
+            </TableCell>
+          ))}
         </TableRow>
       ))}
     </TableBodyMUI>
   );
 }
-
 
 TableBody.propTypes = {
   type: PropTypes.string,

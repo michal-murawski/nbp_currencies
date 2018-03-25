@@ -8,7 +8,6 @@ import { HeaderRaw, headerTitle } from '../Header';
 const TestChild = () => <div>Test child text</div>;
 const mockClasses = { title: 'title_class' };
 
-
 describe('layout/Header', () => {
   const wrapper = shallow(
     <HeaderRaw classes={mockClasses}>
@@ -23,6 +22,11 @@ describe('layout/Header', () => {
   it('should render AppBar and Typography', () => {
     expect(wrapper.find(AppBar)).toHaveLength(1);
     expect(wrapper.find(Typography)).toHaveLength(1);
-    expect(wrapper.find(Typography).render().text()).toEqual(headerTitle);
+    expect(
+      wrapper
+        .find(Typography)
+        .render()
+        .text()
+    ).toEqual(headerTitle);
   });
 });

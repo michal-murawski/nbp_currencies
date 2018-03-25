@@ -7,7 +7,6 @@ import { getRowKeys } from 'utils/tableHelpers';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 
-
 class Table extends Component {
   constructor(props) {
     super(props);
@@ -15,8 +14,8 @@ class Table extends Component {
     this.state = {
       rows: props.rows,
       sortDirection: 'asc',
-      searchParameter: ''
-    }
+      searchParameter: '',
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,7 +24,7 @@ class Table extends Component {
         searchParameter,
         this.getSortDirection(sortDirection),
         nextProps.rows
-      )
+      ),
     }));
   }
 
@@ -37,11 +36,15 @@ class Table extends Component {
     }
   }
 
-  sortTableBy = (searchParameter) => {
+  sortTableBy = searchParameter => {
     this.setState(({ rows, sortDirection }) => ({
-      rows: sortArray(searchParameter, this.getSortDirection(sortDirection), rows),
+      rows: sortArray(
+        searchParameter,
+        this.getSortDirection(sortDirection),
+        rows
+      ),
       sortDirection: this.getSortDirection(sortDirection),
-      searchParameter
+      searchParameter,
     }));
   };
 
@@ -52,7 +55,11 @@ class Table extends Component {
     return (
       <Paper>
         <TableMUI>
-          <TableHead headerLabels={headerLabels} onHeadCellClick={this.sortTableBy} direction={sortDirection} />
+          <TableHead
+            headerLabels={headerLabels}
+            onHeadCellClick={this.sortTableBy}
+            direction={sortDirection}
+          />
           <TableBody rows={rows} rowKeys={getRowKeys(headerLabels)} />
         </TableMUI>
       </Paper>
@@ -62,7 +69,7 @@ class Table extends Component {
 
 Table.defaultProps = {
   rows: [],
-}
+};
 
 Table.propTypes = {
   rows: PropTypes.array,

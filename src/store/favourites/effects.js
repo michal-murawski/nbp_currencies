@@ -38,21 +38,21 @@ export function* workerFavouritesRemoveRequest({ payload: id }) {
   try {
     yield call(Api.favourites.deleteFavourites, id);
 
-    yield put(favouritesRemoveRequestSuccess(id))
+    yield put(favouritesRemoveRequestSuccess(id));
   } catch (exception) {
-    yield put(favouritesAddRequestFailure(exception))
+    yield put(favouritesAddRequestFailure(exception));
   }
 }
 
 export function* workerfFavouritesRemoveAllRequest({ payload: deleteIds }) {
   try {
-    const deleteApiCalls = deleteIds.map(id => call(Api.favourites.deleteFavourites, id));
-    yield all(
-      deleteApiCalls
-    )
+    const deleteApiCalls = deleteIds.map(id =>
+      call(Api.favourites.deleteFavourites, id)
+    );
+    yield all(deleteApiCalls);
 
     yield put(favouritesRemoveAllRequestSuccess());
-  } catch(exception) {
+  } catch (exception) {
     yield put(favouritesRemoveRequestFailure(exception));
   }
 }
@@ -61,5 +61,8 @@ export default function*() {
   yield takeEvery(favouritesFetchRequest, workerFavouritesFetchRequest);
   yield takeEvery(favouritesAddRequest, workerFavouritesAddRequest);
   yield takeEvery(favouritesRemoveRequest, workerFavouritesRemoveRequest);
-  yield takeLatest(favouritesRemoveAllRequest, workerfFavouritesRemoveAllRequest )
+  yield takeLatest(
+    favouritesRemoveAllRequest,
+    workerfFavouritesRemoveAllRequest
+  );
 }

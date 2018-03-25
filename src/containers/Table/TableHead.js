@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import { TableHead as TableHeadMUI, TableRow, TableCell, TableSortLabel } from 'material-ui/Table';
+import {
+  TableHead as TableHeadMUI,
+  TableRow,
+  TableCell,
+  TableSortLabel,
+} from 'material-ui/Table';
 import { TableHeadStyles } from './styles';
 
 class TableHead extends Component {
@@ -10,7 +15,7 @@ class TableHead extends Component {
 
     this.state = {
       activeIndex: null,
-    }
+    };
   }
 
   handleOnClick = (sorter, index) => () => {
@@ -18,7 +23,7 @@ class TableHead extends Component {
       this.setState({ activeIndex: index });
       this.props.onHeadCellClick(sorter);
     }
-  }
+  };
 
   render() {
     const { classes, headerLabels, direction } = this.props;
@@ -33,10 +38,16 @@ class TableHead extends Component {
               key={label.label}
               classes={{ head: classes.title }}
             >
-              {label.sorter ?
-                <TableSortLabel direction={direction} active={activeIndex === index}>{label.label}</TableSortLabel>
-                : label.label
-              }
+              {label.sorter ? (
+                <TableSortLabel
+                  direction={direction}
+                  active={activeIndex === index}
+                >
+                  {label.label}
+                </TableSortLabel>
+              ) : (
+                label.label
+              )}
             </TableCell>
           ))}
         </TableRow>
@@ -48,10 +59,12 @@ class TableHead extends Component {
 TableHead.propTypes = {
   onHeadCellClick: PropTypes.func,
   direction: PropTypes.oneOf(['asc', 'desc']),
-  headerLabels: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string,
-    sorter: PropTypes.string,
-  })),
+  headerLabels: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      sorter: PropTypes.string,
+    })
+  ),
 };
 
 export default withStyles(TableHeadStyles)(TableHead);

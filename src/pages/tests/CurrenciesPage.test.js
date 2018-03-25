@@ -9,9 +9,7 @@ describe('pages/CurrenciesPage', () => {
   });
 
   it('should contain Table', () => {
-    const wrapper = shallow(
-      <CurrenciesPage />
-    );
+    const wrapper = shallow(<CurrenciesPage />);
 
     expect(wrapper.find(Table)).toHaveLength(1);
   });

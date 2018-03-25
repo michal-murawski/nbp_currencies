@@ -9,29 +9,38 @@ import { getFavouriteIdByCode, getValueByPath } from 'utils/dataHelpers';
 import { currenciesHeaderLabels } from './data';
 
 class CurrenciesPage extends React.PureComponent {
-  addIconToRow = (row) => assoc(
-    'add',
-    <FavouriteIndicatorIcon code={row.code} favouriteId={getFavouriteIdByCode(row.code, this.props.favourites)} />,
-    row
-  );
+  addIconToRow = row =>
+    assoc(
+      'add',
+      <FavouriteIndicatorIcon
+        code={row.code}
+        favouriteId={getFavouriteIdByCode(row.code, this.props.favourites)}
+      />,
+      row
+    );
 
   render() {
     const { fetching, currencies } = this.props;
 
-    return fetching ?
-          <PageLoader />
-          : <Table headerLabels={currenciesHeaderLabels} rows={map(this.addIconToRow, currencies)} />
+    return fetching ? (
+      <PageLoader />
+    ) : (
+      <Table
+        headerLabels={currenciesHeaderLabels}
+        rows={map(this.addIconToRow, currencies)}
+      />
+    );
   }
 }
 
 CurrenciesPage.propTypes = {
-  fetching:PropTypes.bool,
-  error:PropTypes.bool,
+  fetching: PropTypes.bool,
+  error: PropTypes.bool,
   currencies: PropTypes.array,
   favourites: PropTypes.array,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   error: getValueByPath(['currencies', 'error'], state),
   fetching: getValueByPath(['currencies', 'fetchig'], state),
   currencies: getValueByPath(['currencies', 'data'], state),

@@ -19,31 +19,41 @@ const defaultData = [];
 const defaultFetching = false;
 const defaultSaving = false;
 
+const fetching = handleActions(
+  {
+    [favouritesFetchRequest]: () => true,
+    [favouritesRemoveAllRequest]: () => true,
+    [favouritesRemoveAllRequestSuccess]: () => false,
+    [favouritesFetchRequestSuccess]: () => false,
+    [favouritesFetchRequestFailure]: () => false,
+  },
+  defaultFetching
+);
 
-const fetching = handleActions({
-  [favouritesFetchRequest]: () => true,
-  [favouritesRemoveAllRequest]: () => true,  
-  [favouritesRemoveAllRequestSuccess]: () => false,
-  [favouritesFetchRequestSuccess]: () => false,
-  [favouritesFetchRequestFailure]: () => false,
-}, defaultFetching);
+const saving = handleActions(
+  {
+    [favouritesAddRequest]: () => true,
+    [favouritesRemoveRequest]: () => true,
+    [favouritesRemoveAllRequestSuccess]: () => true,
+    [favouritesRemoveRequestSuccess]: () => false,
+    [favouritesAddRequestSuccess]: () => false,
+    [favouritesRemoveRequestFailure]: () => false,
+    [favouritesAddRequestFailure]: () => false,
+  },
+  defaultSaving
+);
 
-const saving = handleActions({
-  [favouritesAddRequest]: () => true,
-  [favouritesRemoveRequest]: () => true,
-  [favouritesRemoveAllRequestSuccess]: () => true,  
-  [favouritesRemoveRequestSuccess]: () => false,
-  [favouritesAddRequestSuccess]: () => false,
-  [favouritesRemoveRequestFailure]: () => false,
-  [favouritesAddRequestFailure]: () => false,
-}, defaultSaving);
-
-const data = handleActions({
-  [favouritesFetchRequestSuccess]: (_, { payload }) => payload,
-  [favouritesRemoveAllRequestSuccess]: () => [],
-  [favouritesAddRequestSuccess]: (state, { payload }) => append(payload, state),
-  [favouritesRemoveRequestSuccess]: (state, { payload }) => reject(propEq('id', payload), state),
-}, defaultData);
+const data = handleActions(
+  {
+    [favouritesFetchRequestSuccess]: (_, { payload }) => payload,
+    [favouritesRemoveAllRequestSuccess]: () => [],
+    [favouritesAddRequestSuccess]: (state, { payload }) =>
+      append(payload, state),
+    [favouritesRemoveRequestSuccess]: (state, { payload }) =>
+      reject(propEq('id', payload), state),
+  },
+  defaultData
+);
 
 export default combineReducers({
   fetching,
