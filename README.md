@@ -24,7 +24,9 @@
  `yarn dev-server`
  5. In another terminal run client code:
  `yarn start`
- 6. Go to the provided localhost address and enjoy :)
+ 6. Run tests:
+ `yarn test`
+ 7. Go to the provided localhost address and enjoy :)
 
 I 'killed the fly with the bazooka', but only for a showcase. This is the first time when I used `redux-actions` because I wanted to verify how does the code looks like when we use this kind of approach.
 We are fetching only one currencies table from the available API (table A). The applications has some simple tests examples because I simply did not have enough time to make 100% coverage.
