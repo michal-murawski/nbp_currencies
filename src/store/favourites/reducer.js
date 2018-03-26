@@ -11,8 +11,8 @@ import {
   favouritesRemoveAllRequest,
 } from './actions';
 
-const defaultData = [];
-const defaultFetching = false;
+export const defaultData = [];
+export const defaultFetching = false;
 
 const fetching = handleActions(
   {

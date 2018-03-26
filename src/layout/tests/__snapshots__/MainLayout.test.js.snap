@@ -10,5 +10,6 @@ exports[`layout/MainLayouRaw should render properly the MainLayouRaw 1`] = `
     <TestChild />
     <TestChild />
   </WithStyles(Content)>
+  <Connect(Snackbar) />
 </div>
 `;

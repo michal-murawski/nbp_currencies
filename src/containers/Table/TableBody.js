@@ -24,7 +24,6 @@ function TableBody(props) {
 }
 
 TableBody.propTypes = {
-  type: PropTypes.string,
   rows: PropTypes.array,
   rowKeys: PropTypes.array,
 };

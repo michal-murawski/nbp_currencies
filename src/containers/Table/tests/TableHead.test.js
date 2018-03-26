@@ -6,8 +6,8 @@ import TableHead from '../TableHead';
 
 const mockOnHeadClick = jest.fn();
 
-describe('containers/Table/TableCell', () => {
-  it('should call TableCell with children', () => {
+describe('containers/Table/TableHead', () => {
+  it('should render proper number of cells', () => {
     const wrapper = shallow(
       <TableHead
         headerLabels={tableHeadLabels}

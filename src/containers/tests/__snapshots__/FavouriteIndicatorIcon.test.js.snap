@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers/FavouriteIndicatorIcon should render properly with Favourites Icon 1`] = `
+<WithStyles(IconButton)
+  onClick={[Function]}
+>
+  <pure(Favorite) />
+</WithStyles(IconButton)>
+`;

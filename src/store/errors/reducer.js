@@ -12,7 +12,7 @@ import {
   currenciesFetchRequestFailure,
 } from '../currencies/actions';
 
-const defaultError = null;
+export const defaultError = null;
 
 const message = handleActions(
   {
@@ -25,8 +25,7 @@ const message = handleActions(
       return null;
     },
     [currenciesFetchRequest]: () => null,
-    [currenciesFetchRequestFailure]: (_, { payload }) =>
-      payload.message,
+    [currenciesFetchRequestFailure]: (_, { payload }) => payload.message,
   },
   defaultError
 );

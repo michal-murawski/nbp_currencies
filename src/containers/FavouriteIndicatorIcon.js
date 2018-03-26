@@ -35,9 +35,7 @@ class FavouriteIndicatorIcon extends React.PureComponent {
     }
 
     return (
-      <IconButton
-        onClick={this.onClickHandler}
-      >
+      <IconButton onClick={this.onClickHandler}>
         {favouriteId ? <Favorite /> : <NotFavorite />}
       </IconButton>
     );
@@ -60,4 +58,8 @@ const mapStateToProps = state => ({
   favouritesFetching: getValueByPath(['favourites', 'fetching'], state),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavouriteIndicatorIcon);
+export const FavouriteIndicatorIconRaw = FavouriteIndicatorIcon;
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  FavouriteIndicatorIcon
+);
