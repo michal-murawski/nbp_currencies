@@ -23,4 +23,6 @@ PageLoader.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
+export const PageLoaderRaw = PageLoader;
+
 export default withStyles(styles)(PageLoader);

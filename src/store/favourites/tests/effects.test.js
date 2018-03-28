@@ -22,30 +22,21 @@ describe('Favourites Effects', () => {
   const worker = favouritesEffects();
 
   it('should start a task to watch for `favouritesFetchRequest` action', () => {
-    const expected = takeEvery(
-      favouritesFetchRequest,
-      workerFavouritesFetchRequest
-    );
+    const expected = takeEvery(favouritesFetchRequest, workerFavouritesFetchRequest);
     const actual = worker.next().value;
 
     expect(actual).toEqual(expected);
   });
 
   it('should start a task to watch for `favouritesFetchRequest` action', () => {
-    const expected = takeEvery(
-      favouritesAddRequest,
-      workerFavouritesAddRequest
-    );
+    const expected = takeEvery(favouritesAddRequest, workerFavouritesAddRequest);
     const actual = worker.next().value;
 
     expect(actual).toEqual(expected);
   });
 
   it('should start a task to watch for `favouritesRemoveRequest` action', () => {
-    const expected = takeEvery(
-      favouritesRemoveRequest,
-      workerFavouritesRemoveRequest
-    );
+    const expected = takeEvery(favouritesRemoveRequest, workerFavouritesRemoveRequest);
     const actual = worker.next().value;
 
     expect(actual).toEqual(expected);
@@ -90,9 +81,7 @@ describe('Favourites Effects - Favourites Load Request', () => {
 
 describe('Favourites Effects - Favourites Add Request', () => {
   const newFavourite = favourites[0];
-  const worker = workerFavouritesAddRequest(
-    favouritesFetchRequest(newFavourite)
-  );
+  const worker = workerFavouritesAddRequest(favouritesFetchRequest(newFavourite));
 
   it('should call necessary API methods', () => {
     const expected = call(Api.favourites.addFavourites, newFavourite);

@@ -5,23 +5,21 @@ const apiUrl = 'http://api.nbp.pl/api/exchangerates/tables/a';
 const localDevServer = 'http://localhost:7878/favourites';
 
 async function getCurrencies() {
-  const response = await fetch(apiUrl, options.get);
-
-  if (!response.ok) {
+  try {
+    const response = await fetch(apiUrl, options.get);
+    return await response.json();
+  } catch (exception) {
     throw new Error('We could not download currencies!');
   }
-
-  return await response.json();
 }
 
 async function getFavourites() {
-  const response = await fetch(localDevServer, options.get);
-
-  if (!response.ok) {
+  try {
+    const response = await fetch(localDevServer, options.get);
+    return await response.json();
+  } catch (exception) {
     throw new Error('We could not download favourites!');
   }
-
-  return await response.json();
 }
 
 async function addFavourites(currency) {
@@ -32,7 +30,6 @@ async function addFavourites(currency) {
 
   try {
     const response = await fetch(localDevServer, options.post({ body }));
-
     return await response.json();
   } catch (e) {
     throw new Error('We could add favourite currency!');
@@ -40,13 +37,12 @@ async function addFavourites(currency) {
 }
 
 async function deleteFavourites(id) {
-  const response = await fetch(`${localDevServer}/${id}`, options.delete);
-
-  if (!response.ok) {
+  try {
+    const response = await fetch(`${localDevServer}/${id}`, options.delete);
+    return await response.json();
+  } catch (e) {
     throw new Error('We could not delete currency!');
   }
-
-  return await response.json();
 }
 
 export default {

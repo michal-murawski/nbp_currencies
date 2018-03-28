@@ -34,11 +34,7 @@ class Table extends Component {
 
   sortTableBy = searchParameter => {
     this.setState(({ rows, sortDirection }) => ({
-      rows: sortArray(
-        searchParameter,
-        this.getSortDirection(sortDirection),
-        rows
-      ),
+      rows: sortArray(searchParameter, this.getSortDirection(sortDirection), rows),
       sortDirection: this.getSortDirection(sortDirection),
       searchParameter,
     }));

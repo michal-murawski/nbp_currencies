@@ -18,10 +18,8 @@ const MainLayout = props => {
 };
 
 MainLayout.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+    .isRequired,
 };
 
 export const MainLayouRaw = MainLayout;

@@ -33,14 +33,10 @@ export function getFavouriteIdByCode(code, favourites) {
 
 export const generateRandomNumber = () => Math.floor(Math.random() * 100000);
 
-export const getValueByPath = (pathArray, store) =>
-  view(lensPath(pathArray), store);
+export const getValueByPath = (pathArray, store) => view(lensPath(pathArray), store);
 
 export const filterCurrenciesByFavourites = currencies =>
   compose(
-    innerJoin(
-      (currency, favourite) => propEq('code', favourite, currency),
-      currencies
-    ),
+    innerJoin((currency, favourite) => propEq('code', favourite, currency), currencies),
     map(prop('code'))
   );

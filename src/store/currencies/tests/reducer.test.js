@@ -1,9 +1,6 @@
 import { currencies } from 'tests/testData';
 import reducer, { defaultData, defaultFetching } from '../reducer';
-import {
-  currenciesFetchRequestSuccess,
-  currenciesFetchRequest,
-} from '../actions';
+import { currenciesFetchRequestSuccess, currenciesFetchRequest } from '../actions';
 
 describe('Currencies Reducer', () => {
   it('should handle `currenciesFetchRequest` correctly', () => {

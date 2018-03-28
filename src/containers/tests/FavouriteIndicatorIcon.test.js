@@ -9,9 +9,7 @@ import { FavouriteIndicatorIconRaw } from '../FavouriteIndicatorIcon';
 
 describe('containers/FavouriteIndicatorIcon', () => {
   it('should render properly with Favourites Icon', () => {
-    const wrapper = shallow(
-      <FavouriteIndicatorIconRaw favouriteId={1} code="PLN" />
-    );
+    const wrapper = shallow(<FavouriteIndicatorIconRaw favouriteId={1} code="PLN" />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -24,9 +22,7 @@ describe('containers/FavouriteIndicatorIcon', () => {
   });
 
   it('should render IconLoader if fetching', () => {
-    const wrapper = shallow(
-      <FavouriteIndicatorIconRaw code="PLN" favouritesFetching />
-    );
+    const wrapper = shallow(<FavouriteIndicatorIconRaw code="PLN" favouritesFetching />);
 
     expect(wrapper.find(IconLoader)).toHaveLength(1);
     expect(wrapper.find(NotFavorite)).toHaveLength(0);

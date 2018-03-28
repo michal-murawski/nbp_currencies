@@ -1,5 +1,4 @@
 export const NavigationLinkStyles = theme => {
-  console.log(theme);
   return {
     root: {
       ...theme.typography.button,

@@ -21,16 +21,15 @@ class FavouriteIndicatorIcon extends React.PureComponent {
     } = this.props;
 
     if (favouriteId) {
-      favouritesRemoveRequest(favouriteId);
+      favouritesRemoveRequest({ id: favouriteId, code });
     } else {
       return favouritesAddRequest(code);
     }
   };
 
   render() {
-    const { favouriteId, favouritesFetching } = this.props;
-
-    if (favouritesFetching) {
+    const { favouriteId, favouritesFetching, isSaving } = this.props;
+    if (favouritesFetching || isSaving) {
       return <IconLoader />;
     }
 
@@ -44,14 +43,14 @@ class FavouriteIndicatorIcon extends React.PureComponent {
 
 FavouriteIndicatorIcon.propTypes = {
   favouritesFetching: PropTypes.bool,
+  isSaving: PropTypes.bool,
   code: PropTypes.string,
   favouriteId: PropTypes.number,
 };
 
 const mapDispatchToProps = dispatch => ({
   favouritesAddRequest: code => dispatch(favouritesAddRequestAction(code)),
-  favouritesRemoveRequest: code =>
-    dispatch(favouritesRemoveRequestAction(code)),
+  favouritesRemoveRequest: code => dispatch(favouritesRemoveRequestAction(code)),
 });
 
 const mapStateToProps = state => ({
@@ -60,6 +59,4 @@ const mapStateToProps = state => ({
 
 export const FavouriteIndicatorIconRaw = FavouriteIndicatorIcon;
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  FavouriteIndicatorIcon
-);
+export default connect(mapStateToProps, mapDispatchToProps)(FavouriteIndicatorIcon);

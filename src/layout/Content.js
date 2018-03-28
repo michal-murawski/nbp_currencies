@@ -15,10 +15,8 @@ const Content = props => {
 };
 
 Content.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+    .isRequired,
   classes: PropTypes.object.isRequired,
 };
 

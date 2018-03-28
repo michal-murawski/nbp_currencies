@@ -22,10 +22,8 @@ function IconButton({ children, classes, onClick }) {
 IconButton.propTypes = {
   onClick: PropTypes.func,
   classes: PropTypes.object,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+    .isRequired,
 };
 
 export default withStyles(styles)(IconButton);

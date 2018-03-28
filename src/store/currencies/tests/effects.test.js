@@ -12,10 +12,7 @@ describe('Currencies Effects', () => {
   const worker = currenciesEffects();
 
   it('should start a task to watch for `currenciesFetchRequest` action', () => {
-    const expected = takeLatest(
-      currenciesFetchRequest,
-      workerCurrenciesFetchRequest
-    );
+    const expected = takeLatest(currenciesFetchRequest, workerCurrenciesFetchRequest);
     const actual = worker.next().value;
 
     expect(actual).toEqual(expected);

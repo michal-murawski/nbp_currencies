@@ -88,10 +88,7 @@ describe('utils/dataHelpers/getFavouriteIdByCode', () => {
     const expected = favourites[1];
     const expectedId = prop('id', expected);
 
-    const favouriteId = getFavouriteIdByCode(
-      prop('code', expected),
-      favourites
-    );
+    const favouriteId = getFavouriteIdByCode(prop('code', expected), favourites);
     expect(favouriteId).toEqual(expectedId);
   });
 });

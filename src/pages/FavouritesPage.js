@@ -4,36 +4,26 @@ import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import Table from 'containers/Table/Table';
+import enchantRowWithIcon from 'containers/Table/extras/enchantRowWithIcon';
 import PageLoader from 'components/PageLoader';
-import {
-  getValueByPath,
-  filterCurrenciesByFavourites,
-} from 'utils/dataHelpers';
-import { assoc, map, prop } from 'ramda';
-import FavouriteIndicatorIcon from 'containers/FavouriteIndicatorIcon';
+import { getValueByPath, filterCurrenciesByFavourites } from 'utils/dataHelpers';
+import { map, prop } from 'ramda';
 import { favouritesRemoveAllRequest as favouritesRemoveAllRequestAction } from 'store/favourites/actions';
-import { getFavouriteIdByCode } from 'utils/dataHelpers';
 import { favouritesHeaderLabels } from './data';
 
 class FavouritesPage extends React.PureComponent {
-  addIconToRow = row =>
-    assoc(
-      'add',
-      <FavouriteIndicatorIcon
-        code={row.code}
-        favouriteId={getFavouriteIdByCode(row.code, this.props.favourites)}
-      />,
-      row
+  renderRows = () => {
+    const { savingFavourites, favourites, currencies } = this.props;
+    const favouritesOnly = filterCurrenciesByFavourites(currencies)(favourites);
+
+    return map(
+      row => enchantRowWithIcon({ row, favourites, savingFavourites }),
+      favouritesOnly
     );
+  };
 
   render() {
-    const {
-      fetching,
-      favourites,
-      currencies,
-      favouritesRemoveAllRequest,
-    } = this.props;
-    const favouritesOnly = filterCurrenciesByFavourites(currencies)(favourites);
+    const { fetching, favourites, favouritesRemoveAllRequest } = this.props;
     const getIds = map(prop('id'));
 
     return (
@@ -51,10 +41,7 @@ class FavouritesPage extends React.PureComponent {
             >
               Unlove them all
             </Button>
-            <Table
-              headerLabels={favouritesHeaderLabels}
-              rows={map(this.addIconToRow, favouritesOnly)}
-            />
+            <Table headerLabels={favouritesHeaderLabels} rows={this.renderRows()} />
           </Grid>
         )}
       </div>
@@ -65,11 +52,14 @@ class FavouritesPage extends React.PureComponent {
 FavouritesPage.propTypes = {
   fetching: PropTypes.bool,
   favouritesRemoveAllRequest: PropTypes.func,
+  currencies: PropTypes.array,
+  savingFavourites: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
   fetching: getValueByPath(['favourites', 'fetching'], state),
   favourites: getValueByPath(['favourites', 'data'], state),
+  savingFavourites: getValueByPath(['favourites', 'savingFavourites'], state),
   currencies: getValueByPath(['currencies', 'data'], state),
 });
 

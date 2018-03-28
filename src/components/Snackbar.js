@@ -32,12 +32,7 @@ class Snackbar extends React.PureComponent {
         }}
         message={message}
         action={[
-          <Button
-            key="close"
-            color="secondary"
-            size="small"
-            onClick={this.handleOnClick}
-          >
+          <Button key="close" color="secondary" size="small" onClick={this.handleOnClick}>
             Close
           </Button>,
         ]}
@@ -55,8 +50,10 @@ const mapStateToProps = state => ({
   message: getValueByPath(['errors', 'message'], state),
 });
 
-const mapDispatchToProsp = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   errorsClearMessage: () => dispatch(errorsClearMessageAction()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProsp)(Snackbar);
+export const SnackbarRaw = Snackbar;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Snackbar);

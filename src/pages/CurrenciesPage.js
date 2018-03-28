@@ -3,32 +3,28 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Table from 'containers/Table/Table';
 import PageLoader from 'components/PageLoader';
-import { assoc, map } from 'ramda';
-import FavouriteIndicatorIcon from 'containers/FavouriteIndicatorIcon';
-import { getFavouriteIdByCode, getValueByPath } from 'utils/dataHelpers';
+import enchantRowWithIcon from 'containers/Table/extras/enchantRowWithIcon';
+import { map } from 'ramda';
+import { getValueByPath } from 'utils/dataHelpers';
 import { currenciesHeaderLabels } from './data';
 
 class CurrenciesPage extends React.PureComponent {
-  addIconToRow = row =>
-    assoc(
-      'add',
-      <FavouriteIndicatorIcon
-        code={row.code}
-        favouriteId={getFavouriteIdByCode(row.code, this.props.favourites)}
-      />,
-      row
+  renderRows = () => {
+    const { savingFavourites, favourites, currencies } = this.props;
+
+    return map(
+      row => enchantRowWithIcon({ row, favourites, savingFavourites }),
+      currencies
     );
+  };
 
   render() {
-    const { fetching, currencies } = this.props;
+    const { fetching } = this.props;
 
     return fetching ? (
       <PageLoader />
     ) : (
-      <Table
-        headerLabels={currenciesHeaderLabels}
-        rows={map(this.addIconToRow, currencies)}
-      />
+      <Table headerLabels={currenciesHeaderLabels} rows={this.renderRows()} />
     );
   }
 }
@@ -45,6 +41,7 @@ const mapStateToProps = state => ({
   fetching: getValueByPath(['currencies', 'fetching'], state),
   currencies: getValueByPath(['currencies', 'data'], state),
   favourites: getValueByPath(['favourites', 'data'], state),
+  savingFavourites: getValueByPath(['favourites', 'savingFavourites'], state),
 });
 
 export default connect(mapStateToProps)(CurrenciesPage);
