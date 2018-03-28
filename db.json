@@ -1,16 +1,28 @@
 {
   "favourites": [
     {
-      "id": 50059,
-      "code": "CHF"
+      "id": 73092,
+      "code": "PHP"
     },
     {
-      "id": 50087,
-      "code": "GBP"
+      "id": 50028,
+      "code": "RON"
     },
     {
-      "id": 74782,
-      "code": "HUF"
+      "id": 67864,
+      "code": "THB"
+    },
+    {
+      "id": 6531,
+      "code": "SGD"
+    },
+    {
+      "id": 95312,
+      "code": "RUB"
+    },
+    {
+      "id": 32524,
+      "code": "SEK"
     }
   ]
 }
