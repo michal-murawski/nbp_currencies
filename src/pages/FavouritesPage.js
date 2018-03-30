@@ -12,7 +12,7 @@ import { favouritesRemoveAllRequest as favouritesRemoveAllRequestAction } from '
 import { favouritesHeaderLabels } from './data';
 
 class FavouritesPage extends React.PureComponent {
-  renderRows = () => {
+  getTableRows = () => {
     const { savingFavourites, favourites, currencies } = this.props;
     const favouritesOnly = filterCurrenciesByFavourites(currencies)(favourites);
 
@@ -41,7 +41,7 @@ class FavouritesPage extends React.PureComponent {
             >
               Unlove them all
             </Button>
-            <Table headerLabels={favouritesHeaderLabels} rows={this.renderRows()} />
+            <Table headerLabels={favouritesHeaderLabels} rows={this.getTableRows()} />
           </Grid>
         )}
       </div>

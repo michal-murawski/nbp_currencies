@@ -9,7 +9,7 @@ import { getValueByPath } from 'utils/dataHelpers';
 import { currenciesHeaderLabels } from './data';
 
 class CurrenciesPage extends React.PureComponent {
-  renderRows = () => {
+  getTableRows = () => {
     const { savingFavourites, favourites, currencies } = this.props;
 
     return map(
@@ -24,7 +24,7 @@ class CurrenciesPage extends React.PureComponent {
     return fetching ? (
       <PageLoader />
     ) : (
-      <Table headerLabels={currenciesHeaderLabels} rows={this.renderRows()} />
+      <Table headerLabels={currenciesHeaderLabels} rows={this.getTableRows()} />
     );
   }
 }

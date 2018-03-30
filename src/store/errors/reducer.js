@@ -18,14 +18,14 @@ const message = handleActions(
   {
     [errorsClearMessage]: () => null,
     [favouritesFetchRequest]: () => null,
-    [favouritesFetchRequestFailure]: (_, { payload }) => payload.message,
-    [favouritesRemoveRequestFailure]: (_, { payload }) => payload.message,
-    [favouritesAddRequestFailure]: (_, { payload }) => payload.message,
+    [favouritesFetchRequestFailure]: (state, { payload }) => payload.message,
+    [favouritesRemoveRequestFailure]: (state, { payload }) => payload.message,
+    [favouritesAddRequestFailure]: (state, { payload }) => payload.message,
     [errorsClearMessage]: () => {
       return null;
     },
     [currenciesFetchRequest]: () => null,
-    [currenciesFetchRequestFailure]: (_, { payload }) => payload.message,
+    [currenciesFetchRequestFailure]: (state, { payload }) => payload.message,
   },
   defaultError
 );

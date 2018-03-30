@@ -20,7 +20,7 @@ const fetching = handleActions(
 
 const data = handleActions(
   {
-    [currenciesFetchRequestSuccess]: (_, { payload }) => payload,
+    [currenciesFetchRequestSuccess]: (state, { payload }) => payload,
   },
   defaultData
 );

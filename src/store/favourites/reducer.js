@@ -49,7 +49,7 @@ const savingFavourites = handleActions(
 
 const data = handleActions(
   {
-    [favouritesFetchRequestSuccess]: (_, { payload }) => payload,
+    [favouritesFetchRequestSuccess]: (state, { payload }) => payload,
     [favouritesRemoveAllRequestSuccess]: () => [],
     [favouritesAddRequestSuccess]: (state, { payload }) => append(payload, state),
     [favouritesRemoveRequestSuccess]: (state, { payload }) =>
