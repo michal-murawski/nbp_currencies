@@ -32,7 +32,7 @@ async function addFavourites(currency) {
     const response = await fetch(localDevServer, options.post({ body }));
     return response.json();
   } catch (e) {
-    throw new Error('We could add favourite currency!', e);
+    throw new Error('We could not add favourite currency!', e);
   }
 }
 
