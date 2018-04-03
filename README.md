@@ -32,3 +32,6 @@ I 'killed the fly with the bazooka', but only for a showcase. This is the first 
 We are fetching only one currencies table from the available API (table A). The applications has some simple tests examples because I simply did not have enough time to make 100% coverage.
 I was not focusing on the visual side of the project. There is also table sorting implemented.
 
+## Explanation
+ * I used hard-coded error messages (api & removeAllFailure effect) as I did not want to spend more work in the json-server.
+ * I assumed that favourites could come from another end-point, this is the reason I created separate store for them.

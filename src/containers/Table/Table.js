@@ -19,7 +19,7 @@ class Table extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState(({ searchParameter, sortDirection, rows }) => ({
+    this.setState(({ searchParameter, sortDirection }) => ({
       rows: sortArray(searchParameter, sortDirection, nextProps.rows),
     }));
   }

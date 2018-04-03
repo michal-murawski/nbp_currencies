@@ -13,6 +13,7 @@ import {
   favouritesAddRequestFailure,
   favouritesRemoveRequest,
   favouritesRemoveRequestFailure,
+  favouritesRemoveAllRequestFailure,
 } from './actions';
 
 export const defaultData = [];
@@ -24,6 +25,7 @@ const fetching = handleActions(
     [favouritesFetchRequest]: () => true,
     [favouritesRemoveAllRequest]: () => true,
     [favouritesRemoveAllRequestSuccess]: () => false,
+    [favouritesRemoveAllRequestFailure]: () => false,
     [favouritesFetchRequestSuccess]: () => false,
     [favouritesFetchRequestFailure]: () => false,
   },
@@ -33,7 +35,7 @@ const fetching = handleActions(
 const savingFavourites = handleActions(
   {
     [favouritesAddRequest]: (state, { payload }) => append(payload, state),
-    [favouritesAddRequestFailure]: (state, { payload }) =>
+    [favouritesAddRequestFailure]: (state, { payload }) => console.log(state, payload) ||
       without(prop('code', payload), state),
     [favouritesAddRequestSuccess]: (state, { payload }) =>
       without(prop('code', payload), state),
@@ -43,6 +45,7 @@ const savingFavourites = handleActions(
       without(prop('code', payload), state),
     [favouritesRemoveRequestFailure]: (state, { payload }) =>
       without(prop('code', payload), state),
+    [favouritesRemoveAllRequestFailure]: () => defaultSavingFavourites
   },
   defaultSavingFavourites
 );

@@ -6,6 +6,7 @@ import {
   favouritesFetchRequestFailure,
   favouritesRemoveRequestFailure,
   favouritesAddRequestFailure,
+  favouritesRemoveAllRequestFailure,
 } from '../favourites/actions';
 import {
   currenciesFetchRequest,
@@ -21,6 +22,7 @@ const message = handleActions(
     [favouritesFetchRequestFailure]: (state, { payload }) => payload.message,
     [favouritesRemoveRequestFailure]: (state, { payload }) => payload.message,
     [favouritesAddRequestFailure]: (state, { payload }) => payload.message,
+    [favouritesRemoveAllRequestFailure]: (state, { payload }) => payload.message,
     [errorsClearMessage]: () => {
       return null;
     },

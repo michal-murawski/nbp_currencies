@@ -16,3 +16,6 @@ export const favouritesRemoveAllRequest = createAction('favourites/remove-all-fe
 export const favouritesRemoveAllRequestSuccess = createAction(
   'favourites/remove-all-success'
 );
+export const favouritesRemoveAllRequestFailure = createAction(
+  'favourites/remove-all-failure'
+);
